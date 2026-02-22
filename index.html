@@ -2,6 +2,7 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>10 Page Teddy Proposal</title>
   <style>
     body {
@@ -14,14 +15,14 @@
     .page {
       display: none;
       height: 100vh;
-      padding: 40px;
+      padding: 20px;
       box-sizing: border-box;
       animation: fadeIn 1s ease;
       background: url('https://eskipaper.com/images/cute-teddy-bear-11.jpg') no-repeat center/cover;
     }
     .active { display: block; }
     h1 {
-      font-size: 3em;
+      font-size: 8vw; /* responsive */
       margin-bottom: 20px;
       background: linear-gradient(45deg, #ff99cc, #ff3366, #ffccff);
       -webkit-background-clip: text;
@@ -33,13 +34,13 @@
       to { text-shadow: 0 0 20px #ff3366; }
     }
     .shayari {
-      font-size: 1.5em;
-      line-height: 1.8;
+      font-size: 4vw; /* responsive */
+      line-height: 1.6;
       margin: 20px auto;
-      max-width: 700px;
+      max-width: 90%;
       animation: slideUp 1.5s ease;
       background: rgba(255, 182, 193, 0.3);
-      padding: 20px;
+      padding: 15px;
       border-radius: 15px;
       box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
       color: #fff0f5;
@@ -50,14 +51,14 @@
     @keyframes slideUp { from {transform:translateY(50px);opacity:0;} to {transform:translateY(0);opacity:1;} }
     nav {
       position: fixed;
-      bottom: 20px;
+      bottom: 15px;
       left: 50%;
       transform: translateX(-50%);
     }
     button {
       margin: 5px;
       padding: 12px 20px;
-      font-size: 1.1em;
+      font-size: 4vw; /* responsive */
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -83,12 +84,18 @@
     }
     /* Welcome Page Special */
     #welcome h1 {
-      font-size: 4em;
+      font-size: 10vw; /* responsive */
       animation: zoomIn 2s ease, glow 2s infinite alternate;
     }
     @keyframes zoomIn {
       from { transform: scale(0.2); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
+    }
+    /* Extra media query for very small phones */
+    @media (max-width: 400px) {
+      h1 { font-size: 12vw; }
+      .shayari { font-size: 5vw; }
+      button { font-size: 5vw; padding: 10px 16px; }
     }
   </style>
 </head>
