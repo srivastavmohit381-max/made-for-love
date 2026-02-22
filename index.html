@@ -81,6 +81,15 @@
       50% { opacity: 1; }
       100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
+    /* Welcome Page Special */
+    #welcome h1 {
+      font-size: 4em;
+      animation: zoomIn 2s ease, glow 2s infinite alternate;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.2); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -88,8 +97,13 @@
   <!-- Floating hearts -->
   <div class="hearts" id="hearts"></div>
 
+  <!-- Welcome Page -->
+  <div class="page active" id="welcome">
+    <h1>Welcome My Love ❤️</h1>
+  </div>
+
   <!-- 10 Pages -->
-  <div class="page active" id="page1"><h1>💖💖💖</h1><div class="shayari">"Tum meri zindagi ka sabse pyara teddy ho,<br> Har pal tumse hi roshan hota hai."</div></div>
+  <div class="page" id="page1"><h1>💖💖💖</h1><div class="shayari">"Tum meri zindagi ka sabse pyara teddy ho,<br> Har pal tumse hi roshan hota hai."</div></div>
   <div class="page" id="page2"><h1>🌹🌹🌹</h1><div class="shayari">"Jaise teddy bina bachpan adhoora hai,<br> Waise tum bina meri duniya adhoori hai."</div></div>
   <div class="page" id="page3"><h1>✨✨✨</h1><div class="shayari">"💖 I Love You 💖<br> Tum meri duniya ka sabse khoobsurat sapna ho."</div></div>
   <div class="page" id="page4"><h1>🎶🎶🎶</h1><div class="shayari">"Tum meri zindagi ka geet ho,<br> Har sur tumse hi poora hota hai."</div></div>
@@ -107,12 +121,16 @@
   </nav>
 
   <script>
-    let currentPage = 1;
+    let currentPage = 0; // 0 = welcome, then 1-10 pages
     const totalPages = 10;
 
     function showPage(num) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page'+num).classList.add('active');
+      if(num === "welcome") {
+        document.getElementById("welcome").classList.add("active");
+      } else {
+        document.getElementById('page'+num).classList.add('active');
+      }
     }
 
     function nextPage() {
@@ -138,6 +156,15 @@
       setTimeout(() => { heart.remove(); }, 6000);
     }
     setInterval(createHeart, 500);
+
+    // Show welcome first
+    showPage("welcome");
+
+    // After 4 seconds, go to page1
+    setTimeout(() => {
+      currentPage = 1;
+      showPage(currentPage);
+    }, 4000);
   </script>
 </body>
 </html>
